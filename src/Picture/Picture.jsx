@@ -17,7 +17,7 @@ const Picture = ({isThumbnail,source,brand}) => {
           {!isThumbnail &&
           <span className="thumbnailBrandContainer">
             <div className="thumbnailBrandImageContainer">
-              <img src={thumbnailBrandImage} alt="profile image" className="thumbnailImage"/>
+              <img src={thumbnailBrandImage} alt="brand" className="thumbnailImage"/>
             </div>
           </span>
           }
