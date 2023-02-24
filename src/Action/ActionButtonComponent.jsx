@@ -7,17 +7,11 @@ const ActionComponent = ({showBuy,product,handleDeleteProduct}) => {
   const confirmModalRef = useRef(null);
 
   function openModal(isConfirmModal) {
-    if(isConfirmModal)
-    confirmModalRef.current.style.display = 'block';
-    else
-    modalRef.current.style.display = 'block';
+    isConfirmModal ? confirmModalRef.current.style.display = 'block' : modalRef.current.style.display = 'block';
   }
 
   function closeModal(isConfirmModal) {
-    if(isConfirmModal)
-    confirmModalRef.current.style.display = 'none';
-    else
-    modalRef.current.style.display = 'none';
+    isConfirmModal ? confirmModalRef.current.style.display = 'none' : modalRef.current.style.display = 'none';
   }
 
   useEffect(() => {

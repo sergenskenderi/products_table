@@ -1,14 +1,15 @@
 import ActionComponent from "../Action/ActionButtonComponent";
 import "./ProductTable.css"
 import GalleryComponent from "../Gallery/GalleryComponent";
-import Thumbnail from "../Thumbnail/Thumbnail";
+import Picture from "../Picture/Picture";
 import { brandImages } from "../brandImages";
-import { useMemo } from "react";
+import { useCallback, useMemo } from "react";
 
 function ProductTable({products,handleDeleteProduct,error}) {
-  const hasProducts = useMemo(() => {
-    return products && products.length
-  },[products]);
+
+  const showBuyButton = useCallback((product) => {
+    return brandImages[product.brand] && product.discountPercentage > 15 && product.rating > 4.8;
+  },[]);
 
   return (
     <>
@@ -22,11 +23,11 @@ function ProductTable({products,handleDeleteProduct,error}) {
             <div className="cell header">Actions</div>
           </div>
           {
-            hasProducts && products.map((product,key) => {
+            products && products.length && products.map((product,key) => {
               return (
                 <div key={key} className="row">
                   <div className="cell">
-                    <Thumbnail isThumbnail thumbnailImage={product.thumbnail}/>
+                    <Picture isThumbnail source={product.thumbnail}/>
                     <p className="title">
                       {product.title}
                     </p>
@@ -36,9 +37,9 @@ function ProductTable({products,handleDeleteProduct,error}) {
                     <GalleryComponent brand={product.brand} images={product.images}/>
                   </div>
                   <div className="cell">
-                  <ActionComponent showBuy={brandImages[product.brand] && product.discountPercentage > 15 && product.rating > 4.8} 
-                                  product={product} 
-                                  handleDeleteProduct={handleDeleteProduct}/>
+                  <ActionComponent showBuy={showBuyButton(product)} 
+                                   product={product} 
+                                   handleDeleteProduct={handleDeleteProduct}/>
                   </div>
                 </div>
               )

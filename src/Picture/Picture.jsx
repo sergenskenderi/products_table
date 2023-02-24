@@ -1,11 +1,17 @@
-import "./Thumbnail.css";
+import "./Picture.css";
 import { brandImages } from "../brandImages";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
-const Thumbnail = ({isThumbnail,thumbnailImage,brand}) => {
+const Picture = ({isThumbnail,source,brand}) => {
     return (
         <span className="thumbnailContainer">
           <div className="thumbnailImageContainer avatar">
-            <img src={thumbnailImage} alt="profile" className="thumbnailImage"/>
+            {/* <img src={source} alt="profile" className="thumbnailImage"/> */}
+            <LazyLoadImage 
+               alt="profile"
+               src={source}
+               className="thumbnailImage"
+            />
           </div>
           { !isThumbnail &&
           <span className="thumbnailBrandContainer">
@@ -18,4 +24,4 @@ const Thumbnail = ({isThumbnail,thumbnailImage,brand}) => {
     )
 }
 
-export default Thumbnail;
+export default Picture;

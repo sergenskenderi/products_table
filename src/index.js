@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import ProductTableController from './ProductTable/ProductTableController';
+import "./config";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

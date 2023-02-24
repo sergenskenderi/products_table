@@ -14,27 +14,16 @@
   flex-direction: row;
   border-bottom: 1px solid rgb(167, 167, 167);
   border-collapse: collapse;
+  position: relative;
 }
 
 .row:last-child{
   border-bottom: none;
 }
 
-@media screen and (max-width: 768px) {
-  .row {
-    flex-direction: column;
-  }
-}
-
 .header {
   font-weight: bold;
   color:rgb(167, 167, 167);
-}
-
-@media screen and (max-width: 768px) {
-  .header{
-    display: none;
-  }
 }
 
 .cell {
@@ -63,4 +52,24 @@
   font-size: larger;
   text-align: center;
   font-weight: bold;
+}
+
+@media screen and (max-width: 768px) {
+  .row {
+    flex-direction: column;
+  }
+
+  .header{
+    display: none;
+  }
+
+  .cell:last-child{
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  .cell:first-child{
+    margin-right: 20px;
+  }
 }

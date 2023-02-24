@@ -1,4 +1,4 @@
-import Thumbnail from "../Thumbnail/Thumbnail";
+import Thumbnail from "../Picture/Picture";
 import "./Modal.css"
 
 const Modal = ({isActionStyle,children,modalRef}) => {

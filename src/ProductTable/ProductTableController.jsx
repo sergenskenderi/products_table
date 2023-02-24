@@ -1,5 +1,5 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
+import { fetchData } from "../api";
 import ProductTable from "./ProductTable";
 
 const ProductTableController = () => {
@@ -7,16 +7,7 @@ const ProductTableController = () => {
     const [error,setError] = useState();
 
     useEffect( () => {
-        const fetchData = async () => {
-            try {
-              const response = await axios.get("https://dummyjson.com/products");
-              setProducts(response.data.products);
-            } catch (error) {
-              setError(error);
-            }
-          };
-
-          fetchData();
+        fetchData("/products").then((response) => setProducts(response.data.products)).catch((error) => setError(error));
     },[]);
 
     const handleDeleteProduct = (productId) => {
