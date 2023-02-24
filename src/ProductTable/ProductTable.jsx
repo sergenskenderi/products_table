@@ -3,27 +3,26 @@ import "./ProductTable.css"
 import GalleryComponent from "../Gallery/GalleryComponent";
 import Picture from "../Picture/Picture";
 import { brandImages } from "../brandImages";
-import { useCallback, useMemo } from "react";
 
-function ProductTable({products,handleDeleteProduct,error}) {
+function showBuyButton(product) {
+  return brandImages[product.brand] && product.discountPercentage > 15 && product.rating > 4.8;
+}
 
-  const showBuyButton = useCallback((product) => {
-    return brandImages[product.brand] && product.discountPercentage > 15 && product.rating > 4.8;
-  },[]);
-
+function ProductTable({products,handleDeleteButtonClick,error}) {
   return (
     <>
       {
         error ? <p className="errorLabel">Something went wrong. Please try again later.</p> : 
         <div className="table">
+          { products?.length &&
+          <>
           <div className="row header">
             <div className="cell header">Name</div>
             <div className="cell header">Brand</div>
             <div className="cell header">Gallery</div>
             <div className="cell header">Actions</div>
           </div>
-          {
-            products && products.length && products.map((product,key) => {
+          { products.map((product,key) => {
               return (
                 <div key={key} className="row">
                   <div className="cell">
@@ -39,12 +38,14 @@ function ProductTable({products,handleDeleteProduct,error}) {
                   <div className="cell">
                   <ActionComponent showBuy={showBuyButton(product)} 
                                    product={product} 
-                                   handleDeleteProduct={handleDeleteProduct}/>
+                                   handleDeleteButtonClick={handleDeleteButtonClick}/>
                   </div>
                 </div>
               )
             })
-          }
+           }
+          </>
+         }
        </div>
       }
     </>

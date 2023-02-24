@@ -14,16 +14,18 @@ const GalleryComponent = ({images,brand}) => {
     galleryModalRef.current.style.display = 'none';
   }
 
-  const firstFiveImage = images.slice(0, 5);
+  const firstFiveImages = images.slice(0, 5);
+  const remainingImages = images.slice(5);
+
     return (
         <div className="gallery_container">
-          { images && images.length && images.length > 5 && <div>
+          { images && images.length > 5 && <div>
                 <div className="checkForMore" onMouseEnter={() => openModal()} onMouseLeave={() => closeModal()}>
                     +{images.length - 5}
                 </div>
                 <Modal modalRef={galleryModalRef}>
                   <div className="galleryModalContent">
-                  {images.slice(5).map((image, key) => (
+                  {remainingImages.map((image, key) => (
                     <Picture brand={brand} key={key} source={image}/>
                   ))}
                   </div>
@@ -31,7 +33,7 @@ const GalleryComponent = ({images,brand}) => {
             </div>
           }
           {
-            images && images.length && firstFiveImage.map((image,key) => <Picture key={key} brand={brand} source={image}/>)
+            images && firstFiveImages.map((image,key) => <Picture key={key} brand={brand} source={image}/>)
           }
         </div>
     )

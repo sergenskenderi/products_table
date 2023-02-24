@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import Modal from "../Modal/Modal"
 import "./ActionButton.css"
 
-const ActionComponent = ({showBuy,product,handleDeleteProduct}) => {
+const ActionComponent = ({showBuy,product,handleDeleteButtonClick}) => {
   const modalRef = useRef(null);
   const confirmModalRef = useRef(null);
 
@@ -36,6 +36,16 @@ const ActionComponent = ({showBuy,product,handleDeleteProduct}) => {
     navigator.clipboard.writeText(product.category);
   }
 
+  const handleOpenConfirmationModal = () => {
+    closeModal(true);
+    openModal();
+  };
+
+  const handleConfirmDeleteClick = () => {
+    handleDeleteButtonClick(product.id)
+    closeModal(true)
+  };
+
   return (
     <div>
       <button className="triple-dot" onClick={() => openModal()}>
@@ -48,7 +58,6 @@ const ActionComponent = ({showBuy,product,handleDeleteProduct}) => {
           {showBuy && <p onClick={handleBuyClick}>Buy Now</p>}
           <p onClick={() => handleCopyCategoryClick()}>Copy category</p>
           <p className="deleteLabel" onClick={() => {
-            // handleDeleteProduct(product.id)
             closeModal();
             openModal(true);
             }}>Remove from the list</p>
@@ -58,14 +67,8 @@ const ActionComponent = ({showBuy,product,handleDeleteProduct}) => {
         <div className="actionModalContent">
           <p>Are you sure you want to delete this product ?</p>
           <div className="confirmModalButtonContainer">
-            <button onClick={() => {
-              closeModal(true);
-              openModal();
-            }}>Cancel</button>
-            <button onClick={() => {
-              handleDeleteProduct(product.id)
-              closeModal(true)
-              }}>Delete</button>
+            <button onClick={() => handleOpenConfirmationModal()}>Cancel</button>
+            <button onClick={() => handleConfirmDeleteClick()}>Delete</button>
           </div>
         </div>
       </Modal>

@@ -10,11 +10,11 @@ const ProductTableController = () => {
         fetchData("/products").then((response) => setProducts(response.data.products)).catch((error) => setError(error));
     },[]);
 
-    const handleDeleteProduct = (productId) => {
+    const handleDeleteButtonClick = (productId) => {
         setProducts(products.filter((product) => product.id !== productId));
     }
 
-    return <ProductTable products={products} error={error} handleDeleteProduct={handleDeleteProduct}/>
+    return <ProductTable products={products} error={error} handleDeleteButtonClick={handleDeleteButtonClick}/>
 }
 
 export default ProductTableController;
