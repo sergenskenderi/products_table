@@ -1,0 +1,76 @@
+
+  .thumbnailContainer {
+    position: relative;
+    display: inline-flex;
+    vertical-align: middle;
+    flex-shrink: 0;
+  }
+  
+  .thumbnailImageContainer{
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      overflow: hidden;
+      width: 40px;
+      height: 40px;
+      background-color: transparent;
+  }
+  
+  .avatar{
+    border: 2px solid rgb(250, 250, 251);
+      box-sizing: content-box;
+      margin-left: -7px;
+  }
+  
+  .thumbnailImage {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    object-fit: cover;
+    color: transparent;
+    text-indent: 10000px;
+  }
+  
+  .thumbnailBrandContainer{
+    display: flex;
+    flex-flow: row wrap;
+    place-content: center;
+    align-items: center;
+    position: absolute;
+    box-sizing: border-box;
+    font-family: "Public Sans", sans-serif;
+    font-weight: 500;
+    font-size: 0.75rem;
+    line-height: 1;
+    border-radius: 10px;
+    z-index: 1;
+    transition: transform 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    bottom: 14%;
+    right: 14%;
+    transform: scale(1) translate(50%, 50%);
+    transform-origin: 100% 100%;
+    min-width: 16px;
+    height: 16px;
+    padding: 4px;
+  }
+  
+  .thumbnailBrandImageContainer{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-family: "Public Sans", sans-serif;
+    line-height: 1;
+    border-radius: 50%;
+    overflow: hidden;
+    user-select: none;
+    border: 2px solid rgb(250, 250, 251);
+    font-size: 0.675rem;
+    width: 20px;
+    height: 20px;
+    color: rgb(24, 144, 255);
+    background-color: rgb(230, 247, 255);
+  }

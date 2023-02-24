@@ -1,0 +1,14 @@
+.modalContainer{
+  background-color: white;
+  box-shadow: 0 4px 8px -1px rgba(17, 81, 225, 0.28);
+  border-radius: 10px;
+  padding: 15px;
+  margin: 2px;
+}
+
+.modal {
+  display: none;
+  position: absolute;  
+  z-index: 1500;
+  width: max-content;
+}

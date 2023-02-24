@@ -1,0 +1,63 @@
+.triple-dot {
+    position: relative;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .triple-dot span {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: block;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: rgb(143, 141, 141);
+  }
+  
+  .triple-dot span:nth-child(1) {
+    transform: translate(-50%, -50%) translateX(-6px);
+  }
+  
+  .triple-dot span:nth-child(2) {
+    transform: translate(-50%, -50%);
+  }
+  
+  .triple-dot span:nth-child(3) {
+    transform: translate(-50%, -50%) translateX(6px);
+  }
+
+  .actionModalContent{
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+  }
+
+  .actionModalContent p {
+    cursor: pointer;
+  }
+
+  .deleteLabel{
+    color: rgb(238, 33, 105);
+  }
+
+.confirmModalButtonContainer{
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.confirmModalButtonContainer button {
+  background-color: rgb(81, 81, 186);
+  color: white;
+  border-radius: 4px;
+  border: 1px solid;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.confirmModalButtonContainer button:hover {
+  background-color: rgb(61, 61, 162);
+}
